@@ -7,6 +7,8 @@ rccheck() {
    fi
 }
 
+if [ -f /root/logFacesServer/conf/initial-conf/lfs.xml ];
+then
 if [ ! -f /root/logFacesServer/conf/lfs.xml ];
 then
    echo "Looks like it is the first run of lfs service"
@@ -34,6 +36,8 @@ then
 
    touch /root/lfs-initiated
 fi
+fi
+
 if [ ${MONGO_URL} ]; 
 then
    sed -i 's/com.moonlit.logfaces.config.mongodb=.*/com.moonlit.logfaces.config.mongodb=true/' /root/logFacesServer/conf/environment.properties
